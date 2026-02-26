@@ -1,8 +1,9 @@
-FROM gcc:latest
+FROM alpine:latest
 
 WORKDIR /app
 COPY app.cpp .
 
-RUN g++ app.cpp -o app
+RUN apk add --no-cache g++ \
+    && g++ app.cpp -o app
 
 CMD ["./app"]
